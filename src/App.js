@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./styles/App.css";
+import jmn from "./images/img_2.png";
+import ibg from "./images/ibg logo.png";
+import EventListener from "./components/EventListener";
+import viva from "./images/img_3.png";
 
 function App() {
+  const [showMeter, setShowMeter] = useState(false);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <img src={jmn} alt="logo 1" />
+        <img src={ibg} alt="logo 2" />
       </header>
+      <div className="middle-div">
+        <EventListener showMeter={showMeter} />
+        <button className="btn" onClick={() => setShowMeter(!showMeter)}>
+          {showMeter ? "Esconder Alvômetro" : "Mostrar Alvômetro"}
+        </button>
+      </div>
+
+      <div className="bottom-div">
+        <img src={viva} alt="viva" />
+      </div>
     </div>
   );
 }
