@@ -11,7 +11,6 @@ export default function CircularProgressBar({
   const [count, setCount] = useState(0);
   const firstVal = finalVal - Math.floor(finalVal * 0.4);
   const secondVal = finalVal - Math.floor(finalVal * 0.1);
-  const finalText = percentage;
 
   // Size of the enclosing square
   const sqSize = sq_Size;
@@ -36,6 +35,10 @@ export default function CircularProgressBar({
     } else if (count < finalVal) {
       setTimeout(() => {
         setCount(count + 1);
+      }, 1500);
+    } else if (count === finalVal) {
+      setTimeout(() => {
+        setCount(count + Math.round((percentage - finalVal) * 100) / 100);
       }, 1500);
     }
   }
@@ -68,25 +71,15 @@ export default function CircularProgressBar({
           strokeDashoffset: dashOffset,
         }}
       />
-      {count === finalVal ? (
-        <text
-          className={count > 100 ? "circle-text-full" : "circle-text"}
-          x="50%"
-          y="50%"
-          dy=".3em"
-          textAnchor="middle">
-          {`${finalText}%`}
-        </text>
-      ) : (
-        <text
-          className={count > 100 ? "circle-text-full" : "circle-text"}
-          x="50%"
-          y="50%"
-          dy=".3em"
-          textAnchor="middle">
-          {`${count}%`}
-        </text>
-      )}
+
+      <text
+        className={count > 100 ? "circle-text-full" : "circle-text"}
+        x="50%"
+        y="50%"
+        dy=".3em"
+        textAnchor="middle">
+        {`${count}%`}
+      </text>
     </svg>
   );
 }
