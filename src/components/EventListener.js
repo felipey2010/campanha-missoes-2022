@@ -4,7 +4,7 @@ import CircularProgressBar from "./CircularProgressBar";
 
 export default function EventListener({ showMeter }) {
   const [key, setKey] = useState("e");
-  let percentage = (1115 / 5000) * 100;
+  let percentage = (1335 / 5000) * 100;
 
   useEventListener("keydown", e => {
     if (e.key.toLowerCase() === "m" || e.key.toLowerCase() === "e")

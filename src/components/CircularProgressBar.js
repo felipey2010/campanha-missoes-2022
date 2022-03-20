@@ -7,7 +7,7 @@ export default function CircularProgressBar({
   strokeWidth,
   percentage,
 }) {
-  const finalVal = Math.round(percentage);
+  const finalVal = Math.floor(percentage);
   const [count, setCount] = useState(0);
   const firstVal = finalVal - Math.floor(finalVal * 0.4);
   const secondVal = finalVal - Math.floor(finalVal * 0.1);
